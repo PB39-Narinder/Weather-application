@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Weather App</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Weather Details</h1>
+      </header>
+      <main>
+        <fieldset>
+          <form action="/" method="post">
+            <input name="city" type="text" class="input-field" placeholder="Enter a City" required>
+            <input type="submit" class="submit-button" value="Get Weather">
+          </form>
+          <% if(weather !== null){ %>
+            <div class="weather-info">
+              <h2>Weather in <%= weather.city %></h2>
+              <p><strong>Temperature:</strong> <%= weather.temperature %> °C</p>
+              <p><strong>Condition:</strong> <%= weather.condition %></p>
+              <p><strong>Humidity:</strong> <%= weather.humidity %>%</p>
+              <p><strong>Wind Speed:</strong> <%= weather.windSpeed %> km/h</p>
+            </div>
+          <% } %>
+
+          <% if(error !== null){ %>
+            <div class="error-message">
+              <p><%= error %></p>
+            </div>
+          <% } %>
+        </fieldset>
+      </main>
+    </div>
+  </body>
+</html>
