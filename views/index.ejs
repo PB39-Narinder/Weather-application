@@ -1,0 +1,153 @@
+<%- include('partials/header') %>
+
+<main class="main-content">
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="text-gradient">Weather</span> 
+                    <span class="text-white">Forecast</span>
+                </h1>
+                <p class="hero-subtitle">Real-time weather updates for any location worldwide</p>
+            </div>
+
+            <!-- Search Section -->
+            <div class="search-section">
+                <form action="/weather" method="POST" class="search-form">
+                    <div class="search-wrapper">
+                        <div class="search-input-group">
+                            <i class="fas fa-location-dot"></i>
+                            <input 
+                                type="text" 
+                                name="city" 
+                                placeholder="Enter city name" 
+                                required
+                                class="search-input"
+                            >
+                        </div>
+                        <button type="submit" class="search-button">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                    <div class="current-location">
+                        <button type="button" class="location-button" onclick="getLocation()">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Use my location
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Recent Searches -->
+        <% if (locals.user && recentSearches && recentSearches.length > 0) { %>
+            <section class="recent-searches">
+                <h2 class="section-title">Recent Searches</h2>
+                <div class="history-grid">
+                    <% recentSearches.forEach(search => { %>
+                        <div class="history-card" onclick="searchCity('<%= search.city %>')">
+                            <div class="card-content">
+                                <h3><%= search.city %>, <%= search.country %></h3>
+                                <p><%= new Date(search.date).toLocaleDateString('en-US', { 
+                                    weekday: 'short', 
+                                    month: 'short', 
+                                    day: 'numeric',
+                                    hour: 'numeric',
+                                    minute: 'numeric'
+                                }) %></p>
+                            </div>
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                    <% }) %>
+                </div>
+            </section>
+        <% } %>
+
+        <!-- Popular Cities -->
+        <section class="popular-cities">
+            <h2 class="section-title">Popular Cities</h2>
+            <div class="cities-grid">
+                <div class="city-card" onclick="searchCity('Chandigarh')">
+                    <div class="city-bg chandigarh-bg"></div>
+                    <div class="city-info">
+                        <h3>Chandigarh</h3>
+                        <p>Punjab, India</p>
+                    </div>
+                </div>
+                <div class="city-card" onclick="searchCity('Amritsar')">
+                    <div class="city-bg amritsar-bg"></div>
+                    <div class="city-info">
+                        <h3>Amritsar</h3>
+                        <p>Punjab, India</p>
+                    </div>
+                </div>
+                <div class="city-card" onclick="searchCity('Ludhiana')">
+                    <div class="city-bg ludhiana-bg"></div>
+                    <div class="city-info">
+                        <h3>Ludhiana</h3>
+                        <p>Punjab, India</p>
+                    </div>
+                </div>
+                <div class="city-card" onclick="searchCity('Jalandhar')">
+                    <div class="city-bg jalandhar-bg"></div>
+                    <div class="city-info">
+                        <h3>Jalandhar</h3>
+                        <p>Punjab, India</p>
+                    </div>
+                </div>
+                <div class="city-card" onclick="searchCity('Patiala')">
+                    <div class="city-bg patiala-bg"></div>
+                    <div class="city-info">
+                        <h3>Patiala</h3>
+                        <p>Punjab, India</p>
+                    </div>
+                </div>
+                <div class="city-card" onclick="searchCity('Bathinda')">
+                    <div class="city-bg bathinda-bg"></div>
+                    <div class="city-info">
+                        <h3>Bathinda</h3>
+                        <p>Punjab, India</p>
+                    </div>
+                </div>
+                <div class="city-card" onclick="searchCity('Mohali')">
+                    <div class="city-bg mohali-bg"></div>
+                    <div class="city-info">
+                        <h3>Mohali</h3>
+                        <p>Punjab, India</p>
+                    </div>
+                </div>
+                <div class="city-card" onclick="searchCity('Hoshiarpur')">
+                    <div class="city-bg hoshiarpur-bg"></div>
+                    <div class="city-info">
+                        <h3>Hoshiarpur</h3>
+                        <p>Punjab, India</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+
+<script>
+function searchCity(city) {
+    document.querySelector('.search-input').value = city;
+    document.querySelector('.search-form').submit();
+}
+
+function getCurrentLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition((position) => {
+            // You'll need to implement reverse geocoding
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
+            // For now, just alert coordinates
+            alert(`Latitude: ${lat}, Longitude: ${lon}`);
+        });
+    } else {
+        alert("Geolocation is not supported by this browser.");
+    }
+}
+</script>
+
+<%- include('partials/footer') %> 

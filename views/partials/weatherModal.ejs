@@ -1,0 +1,47 @@
+<div id="weatherModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <div class="modal-weather-content">
+            <div class="modal-header">
+                <h2 id="modalCity"></h2>
+                <img id="modalIcon" src="" alt="Weather icon">
+            </div>
+            <div class="modal-body">
+                <div class="modal-temp-container">
+                    <p class="modal-temperature"></p>
+                    <p class="modal-description"></p>
+                </div>
+                <div class="modal-details">
+                    <div class="detail-item">
+                        <i class="fas fa-tint"></i>
+                        <span>Humidity: </span>
+                        <span id="modalHumidity"></span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-wind"></i>
+                        <span>Wind Speed: </span>
+                        <span id="modalWind"></span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-compress-arrows-alt"></i>
+                        <span>Pressure: </span>
+                        <span id="modalPressure"></span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-eye"></i>
+                        <span>Visibility: </span>
+                        <span id="modalVisibility"></span>
+                    </div>
+                </div>
+                <div class="hourly-forecast">
+                    <h3>24-Hour Forecast</h3>
+                    <div class="hourly-scroll">
+                        <div class="hourly-container" id="hourlyContainer">
+                            <!-- Hourly data will be inserted here by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 

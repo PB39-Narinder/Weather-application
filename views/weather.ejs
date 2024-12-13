@@ -1,0 +1,136 @@
+<%- include('partials/header') %>
+
+<main class="main-content">
+    <div class="container">
+        <!-- Weather Display -->
+        <section class="weather-display">
+            <% if (error) { %>
+                <div class="alert alert-error">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <%= error %>
+                </div>
+            <% } %>
+
+            <% if (weather) { %>
+                <div class="card weather-card animate-scaleIn">
+                    <div class="card-header">
+                        <div class="location-info">
+                            <h2 class="card-title"><%= weather.city %>, <%= weather.country %></h2>
+                            <p class="card-subtitle">
+                                <%= new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) %>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="weather-main">
+                            <div class="weather-icon">
+                                <img src="http://openweathermap.org/img/wn/<%= weather.icon %>@4x.png" 
+                                     alt="<%= weather.description %>">
+                            </div>
+                            <div class="temperature-block">
+                                <span class="temp"><%= Math.round(weather.temp) %>°C</span>
+                                <span class="description"><%= weather.description %></span>
+                            </div>
+                        </div>
+
+                        <div class="card-stats">
+                            <div class="stat-item">
+                                <i class="fas fa-temperature-high"></i>
+                                <span class="stat-value"><%= Math.round(weather.feels_like) %>°C</span>
+                                <span class="stat-label">Feels Like</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-tint"></i>
+                                <span class="stat-value"><%= weather.humidity %>%</span>
+                                <span class="stat-label">Humidity</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-wind"></i>
+                                <span class="stat-value"><%= Math.round(weather.wind_speed) %></span>
+                                <span class="stat-label">Wind (m/s)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <% if (locals.user) { %>
+                        <div class="card-footer">
+                            <button class="action-button favorite-btn button-pulse" onclick="toggleFavorite('<%= weather.city %>')">
+                                <i class="fas fa-star"></i>
+                                <span>Add to Favorites</span>
+                            </button>
+                        </div>
+                    <% } %>
+                </div>
+
+                <% if (forecast && forecast.length > 0) { %>
+                    <!-- Daily Forecast Section -->
+                    <section class="forecast">
+                        <h2 class="section-title">5-Day Forecast</h2>
+                        <div class="forecast-cards">
+                            <% 
+                                const dailyForecasts = forecast
+                                    .filter((item, index) => index % 8 === 0)
+                                    .slice(0, 5);
+                            %>
+                            <% dailyForecasts.forEach(day => { %>
+                                <div class="forecast-card">
+                                    <div class="forecast-date">
+                                        <%= new Date(day.dt * 1000).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' }) %>
+                                    </div>
+                                    <img src="http://openweathermap.org/img/wn/<%= day.icon %>@2x.png" 
+                                         alt="<%= day.description %>">
+                                    <div class="forecast-temp">
+                                        <span class="max"><%= Math.round(day.temp) %>°</span>
+                                        <span class="min"><%= Math.round(day.temp - 3) %>°</span>
+                                    </div>
+                                    <div class="forecast-desc"><%= day.description %></div>
+                                </div>
+                            <% }) %>
+                        </div>
+                    </section>
+
+                    <!-- Hourly Forecast Section -->
+                    <section class="hourly-forecast">
+                        <h2 class="section-title">Hourly Forecast</h2>
+                        <div class="hourly-scroll">
+                            <% forecast.forEach(hour => { %>
+                                <div class="hour-card">
+                                    <div class="hour-time">
+                                        <%= new Date(hour.dt * 1000).toLocaleTimeString('en-US', { 
+                                            hour: 'numeric', 
+                                            hour12: true 
+                                        }) %>
+                                    </div>
+                                    <img 
+                                        src="http://openweathermap.org/img/wn/<%= hour.icon %>@2x.png" 
+                                        alt="<%= hour.description %>"
+                                        class="hour-icon"
+                                    >
+                                    <div class="hour-temp"><%= Math.round(hour.temp) %>°C</div>
+                                    <div class="hour-details">
+                                        <div class="detail">
+                                            <i class="fas fa-wind"></i>
+                                            <%= Math.round(hour.wind_speed) %> m/s
+                                        </div>
+                                        <div class="detail">
+                                            <i class="fas fa-tint"></i>
+                                            <%= hour.humidity %>%
+                                        </div>
+                                    </div>
+                                </div>
+                            <% }) %>
+                        </div>
+                    </section>
+                <% } %>
+            <% } else { %>
+                <div class="empty-state">
+                    <i class="fas fa-cloud-sun"></i>
+                    <p>Search for a city to see weather information</p>
+                </div>
+            <% } %>
+        </section>
+    </div>
+</main>
+
+<%- include('partials/footer') %> 

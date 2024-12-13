@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/css/animations.css">
+    <script src="/js/location.js" defer></script>
+    <script src="/js/favorites.js" defer></script>
+    <script src="/js/nav.js" defer></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="/" class="nav-brand">
+                    <i class="fas fa-cloud-sun"></i>
+                    <span>Weather</span>
+                </a>
+            </div>
+
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="nav-center">
+                <div class="nav-links">
+                    <a href="/" class="nav-link <%= locals.path === '/' ? 'active' : '' %>">
+                        <i class="fas fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    <a href="/favorites" class="nav-link <%= locals.path === '/favorites' ? 'active' : '' %>">
+                        <i class="fas fa-star"></i>
+                        <span>Favorites</span>
+                    </a>
+                    <a href="/history" class="nav-link <%= locals.path === '/history' ? 'active' : '' %>">
+                        <i class="fas fa-history"></i>
+                        <span>History</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="nav-right">
+                <% if (locals.user) { %>
+                    <div class="user-menu">
+                        <div class="avatar">
+                            <%= locals.user.username.charAt(0).toUpperCase() %>
+                        </div>
+                        <div class="dropdown-menu">
+                            <div class="user-info">
+                                <span class="username"><%= locals.user.username %></span>
+                                <span class="email"><%= locals.user.email %></span>
+                            </div>
+                            <div class="menu-divider"></div>
+                            <a href="/profile/edit" class="menu-item">
+                                <i class="fas fa-user-edit"></i>
+                                <span>Edit Profile</span>
+                            </a>
+                            <a href="/auth/logout" class="menu-item">
+                                <i class="fas fa-sign-out-alt"></i>
+                                <span>Logout</span>
+                            </a>
+                        </div>
+                    </div>
+                <% } else { %>
+                    <div class="auth-buttons">
+                        <a href="/auth/login" class="auth-button login">
+                            <i class="fas fa-sign-in-alt"></i>
+                            <span>Login</span>
+                        </a>
+                        <a href="/auth/signup" class="auth-button signup">
+                            <i class="fas fa-user-plus"></i>
+                            <span>Sign Up</span>
+                        </a>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    </nav>
+</body>
+</html> 

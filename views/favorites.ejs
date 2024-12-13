@@ -1,0 +1,70 @@
+<%- include('partials/header') %>
+<script src="/js/favorites.js" defer></script>
+
+<main class="main-content">
+    <div class="container">
+        <section class="favorites-section">
+            <h1 class="section-title">My Favorite Locations</h1>
+            
+            <% if (favorites && favorites.length > 0) { %>
+                <div class="favorites-grid">
+                    <% favorites.forEach(favorite => { %>
+                        <div class="favorite-card">
+                            <div class="favorite-content">
+                                <div class="favorite-info">
+                                    <h3><%= favorite.city %></h3>
+                                    <p><%= favorite.country %></p>
+                                </div>
+                                <div class="favorite-weather">
+                                    <img src="http://openweathermap.org/img/wn/<%= favorite.weather.icon %>@2x.png" 
+                                         alt="<%= favorite.weather.description %>">
+                                    <span class="temperature"><%= Math.round(favorite.weather.temp) %>°C</span>
+                                </div>
+                            </div>
+                            <div class="favorite-actions">
+                                <button onclick="window.location.href='/weather?city=<%= favorite.city %>'" class="view-btn">
+                                    <i class="fas fa-eye"></i>
+                                    View Details
+                                </button>
+                                <button onclick="removeFavorite('<%= favorite._id %>')" 
+                                        class="remove-btn">
+                                    <i class="fas fa-trash"></i>
+                                    Remove
+                                </button>
+                            </div>
+                        </div>
+                    <% }) %>
+                </div>
+            <% } else { %>
+                <div class="empty-state">
+                    <i class="fas fa-star"></i>
+                    <h3>No Favorites Yet</h3>
+                    <p>Start adding your favorite locations to track them easily!</p>
+                    <a href="/" class="action-btn">
+                        <i class="fas fa-search"></i>
+                        Search Weather
+                    </a>
+                </div>
+            <% } %>
+        </section>
+    </div>
+</main>
+
+<script>
+async function removeFavorite(id) {
+    if (confirm('Are you sure you want to remove this location from favorites?')) {
+        try {
+            const response = await fetch(`/favorites/${id}`, {
+                method: 'DELETE'
+            });
+            if (response.ok) {
+                window.location.reload();
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
+}
+</script>
+
+<%- include('partials/footer') %> 

@@ -1,0 +1,1830 @@
+/* Modern Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: #fff;
+    min-height: 100vh;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Navbar Styles */
+.navbar {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: white;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding: 0.5rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.nav-brand:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.nav-center {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1rem;
+    margin: 0 1rem;
+}
+
+.nav-link {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.nav-link:hover, .nav-link.active {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.nav-link i {
+    font-size: 1.1rem;
+}
+
+/* User Menu Styles */
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.auth-button {
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.auth-button.login {
+    color: white;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.auth-button.signup {
+    color: #1e3c72;
+    background: white;
+    font-weight: 500;
+}
+
+.auth-button:hover {
+    transform: translateY(-2px);
+}
+
+.auth-button.login:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.auth-button.signup:hover {
+    background: rgba(255, 255, 255, 0.9);
+}
+
+/* Mobile Menu Button */
+.mobile-menu-btn {
+    display: none;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.mobile-menu-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive Navbar */
+@media (max-width: 768px) {
+    .nav-container {
+        padding: 1rem;
+    }
+
+    .nav-center {
+        display: none;
+        position: fixed;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: rgba(30, 60, 114, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 1rem;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .nav-center.active {
+        display: flex;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+        margin: 0;
+    }
+
+    .nav-link {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    .auth-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .auth-button {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .dropdown-menu {
+        position: fixed;
+        top: unset;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        border-radius: 12px 12px 0 0;
+        z-index: 1001;
+        transform: translateY(100%);
+        transition: transform 0.3s ease;
+    }
+
+    .dropdown-menu.active {
+        transform: translateY(0);
+    }
+
+    .user-menu {
+        margin-left: auto;
+    }
+}
+
+/* Search Form */
+.search-form {
+    margin: 2rem auto;
+    max-width: 600px;
+}
+
+.search-wrapper {
+    display: flex;
+    gap: 1rem;
+    background: white;
+    border-radius: 12px;
+    padding: 0.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.search-input-group {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0 1rem;
+}
+
+.search-input-group i {
+    color: #666;
+    font-size: 1.2rem;
+}
+
+.search-input {
+    flex: 1;
+    border: none;
+    padding: 0.75rem 0;
+    font-size: 1rem;
+    background: transparent;
+}
+
+.search-input:focus {
+    outline: none;
+}
+
+.search-button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.search-button:hover {
+    background: #0056b3;
+    transform: translateY(-2px);
+}
+
+/* Weather Card */
+.weather-card {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.weather-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.weather-icon {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 1rem;
+    transition: all 0.3s ease;
+}
+
+.weather-icon img {
+    width: 120px;
+    height: 120px;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+}
+
+.temperature-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+
+.temp {
+    font-size: 4rem;
+    font-weight: 600;
+    line-height: 1;
+    color: rgba(255, 255, 255, 0.95);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.description {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.8);
+    text-transform: capitalize;
+}
+
+.action-button {
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.action-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .weather-main {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .temperature-block {
+        align-items: center;
+    }
+
+    .temp {
+        font-size: 3rem;
+    }
+
+    .card-stats {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Forecast Section */
+.forecast {
+    margin-top: 3rem;
+}
+
+.forecast-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.forecast-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    backdrop-filter: blur(10px);
+}
+
+.forecast-date {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 1rem;
+}
+
+.forecast-temp {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 1rem 0;
+}
+
+.forecast-temp .min {
+    color: rgba(255, 255, 255, 0.6);
+    margin-left: 0.5rem;
+}
+
+.forecast-desc {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    text-transform: capitalize;
+}
+
+/* Favorite Button Styles */
+.actions {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.favorite-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.favorite-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.favorite-btn i {
+    color: #ccc;
+    transition: all 0.3s ease;
+}
+
+.favorite-btn i.active {
+    color: #ffd700;
+    animation: star-pulse 0.3s ease;
+}
+
+@keyframes star-pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+/* Favorites Page Styles */
+.favorites-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.favorite-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1.5rem;
+    backdrop-filter: blur(10px);
+}
+
+.favorite-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.favorite-weather {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.favorite-weather img {
+    width: 50px;
+    height: 50px;
+}
+
+.temperature {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.favorite-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.view-btn,
+.remove-btn {
+    flex: 1;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    color: white;
+    font-size: 0.9rem;
+}
+
+.view-btn {
+    background: rgba(0, 123, 255, 0.2);
+}
+
+.view-btn:hover {
+    background: rgba(0, 123, 255, 0.3);
+}
+
+.remove-btn {
+    background: rgba(255, 59, 48, 0.1);
+}
+
+.remove-btn:hover {
+    background: rgba(255, 59, 48, 0.2);
+}
+
+@media (max-width: 768px) {
+    .favorite-actions {
+        flex-direction: column;
+    }
+
+    .favorite-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+}
+
+.empty-state i {
+    font-size: 3rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 1rem;
+}
+
+.empty-state h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.empty-state p {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 1.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .nav-links {
+        width: 100%;
+        justify-content: space-around;
+    }
+
+    .search-wrapper {
+        flex-direction: column;
+    }
+
+    .search-button {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .current-weather {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .weather-details {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .forecast-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .favorites-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .favorite-actions {
+        flex-direction: column;
+    }
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 4rem 0;
+}
+
+.hero-content {
+    margin-bottom: 3rem;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.text-gradient {
+    background: linear-gradient(45deg, #fff, #64b5f6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.text-white {
+    color: white;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Recent Searches Section */
+.recent-searches {
+    margin-top: 4rem;
+}
+
+.section-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.history-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.history-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.history-card:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.card-content h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.card-content p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+}
+
+/* Popular Cities Section */
+.popular-cities {
+    margin-top: 4rem;
+}
+
+.cities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.city-card {
+    position: relative;
+    height: 200px;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.city-card:hover {
+    transform: translateY(-5px);
+}
+
+.city-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: all 0.3s ease;
+}
+
+.city-card:hover .city-bg {
+    transform: scale(1.1);
+}
+
+.chandigarh-bg { background-image: url('https://www.orfonline.org/public/uploads/posts/image/chandigarh.jpg'); }
+.amritsar-bg { background-image: url('https://i0.wp.com/stampedmoments.com/wp-content/uploads/2024/04/ranjit-singh-statue-amritsar.jpg?fit=1024%2C768&ssl=1'); }
+.ludhiana-bg { background-image: url('https://cdn.crn.in/wp-content/uploads/2019/05/29093235/Ludhiana.jpg'); }
+.jalandhar-bg { background-image: url('https://s7ap1.scene7.com/is/image/incredibleindia/devi-talab-temple-jalandhar-punjab-city-1-hero?qlt=82&ts=1726674723802'); }
+.patiala-bg { background-image: url('https://s7ap1.scene7.com/is/image/incredibleindia/gurudwara-dukh-nivaran-sahib-patiala-punjab-2-attr-hero?qlt=82&ts=1726661600657'); }
+.bathinda-bg { background-image: url('https://www.bfcet.com/wp-content/uploads/2021/01/Bathinda-City.jpg'); }
+.mohali-bg { background-image: url('https://tricitypropertyguru.com/wp-content/uploads/2022/05/Places-to-Visit-in-Mohali-01.jpg'); }
+.hoshiarpur-bg { background-image: url('https://st2.indiarailinfo.com/kjfdsuiemjvcya3/0/4/9/6/2275496/0/photo0868113691.jpg'); }
+
+.city-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    color: white;
+}
+
+.city-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+}
+
+.city-info p {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Responsive adjustments for index page */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .history-grid,
+    .cities-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .city-card {
+        height: 180px;
+    }
+}
+
+/* Location Button */
+.current-location {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.location-button {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.location-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.location-button i {
+    font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+    .location-button {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* User Profile Styles */
+.user-menu {
+    position: relative;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    background: #ffd700;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #1e3c72;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.avatar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 768px) {
+    .avatar {
+        width: 36px;
+        height: 36px;
+        font-size: 1.1rem;
+    }
+
+    .dropdown-menu {
+        position: fixed;
+        top: unset;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        border-radius: 12px 12px 0 0;
+        z-index: 1001;
+        transform: translateY(100%);
+        transition: transform 0.3s ease;
+    }
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 120%;
+    right: 0;
+    background: white;
+    border-radius: 12px;
+    padding: 1rem;
+    min-width: 200px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    visibility: hidden;
+    animation: fadeIn 0.3s ease;
+    transition: all 0.3s ease;
+    transform: translateY(-10px);
+}
+
+.user-menu:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition-delay: 0.3s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.user-info {
+    padding: 0.5rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.user-info:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.username {
+    display: block;
+    font-weight: 600;
+    color: #1e3c72;
+    margin-bottom: 0.25rem;
+}
+
+.email {
+    display: block;
+    font-size: 0.9rem;
+    color: #666;
+    word-break: break-all;
+}
+
+.menu-divider {
+    height: 1px;
+    background: #eee;
+    margin: 0.5rem 0;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    color: #333;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.menu-item:hover {
+    background: rgba(0, 0, 0, 0.05);
+    color: #1e3c72;
+}
+
+.menu-item i {
+    font-size: 1.1rem;
+    color: #666;
+}
+
+.menu-item:hover i {
+    color: #1e3c72;
+}
+
+/* Edit Profile Styles */
+.edit-profile-section {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+}
+
+.edit-profile-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.9rem;
+}
+
+.form-group input {
+    padding: 0.75rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.password-section {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 1.5rem;
+    margin-top: 1rem;
+}
+
+.password-section h3 {
+    color: white;
+    margin-bottom: 0.5rem;
+}
+
+.hint {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.save-btn, .cancel-btn {
+    flex: 1;
+    padding: 0.75rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.save-btn {
+    background: #4CAF50;
+    color: white;
+    border: none;
+}
+
+.save-btn:hover {
+    background: #45a049;
+    transform: translateY(-2px);
+}
+
+.cancel-btn {
+    background: transparent;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    text-decoration: none;
+}
+
+.cancel-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.alert {
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+.alert-error {
+    background: rgba(255, 59, 48, 0.1);
+    border: 1px solid rgba(255, 59, 48, 0.2);
+    color: #ff3b30;
+}
+
+.alert-success {
+    background: rgba(76, 175, 80, 0.1);
+    border: 1px solid rgba(76, 175, 80, 0.2);
+    color: #4CAF50;
+}
+
+/* Hourly Forecast Styles */
+.hourly-forecast {
+    margin: 2rem 0;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+}
+
+.hourly-scroll {
+    display: flex;
+    overflow-x: auto;
+    gap: 1rem;
+    padding: 1rem 0;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+}
+
+.hourly-scroll::-webkit-scrollbar {
+    height: 6px;
+}
+
+.hourly-scroll::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.hourly-scroll::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+}
+
+.hour-card {
+    flex: 0 0 auto;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1rem;
+    min-width: 120px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.hour-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.hour-time {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 0.5rem;
+}
+
+.hour-icon {
+    width: 50px;
+    height: 50px;
+    margin: 0.5rem auto;
+}
+
+.hour-temp {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0.5rem 0;
+}
+
+.hour-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.detail {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+}
+
+.detail i {
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    .hourly-forecast {
+        padding: 1rem;
+    }
+
+    .hour-card {
+        min-width: 100px;
+        padding: 0.75rem;
+    }
+
+    .hour-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .hour-temp {
+        font-size: 1.1rem;
+    }
+}
+
+/* History Styles */
+.history-section {
+    margin: 2rem 0;
+}
+
+.history-section .section-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.history-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.history-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.history-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.history-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.history-info h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: rgba(255, 255, 255, 0.95);
+    font-weight: 600;
+}
+
+.history-date {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.history-date i {
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+.history-weather {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.5rem;
+    border-radius: 8px;
+}
+
+.history-weather img {
+    width: 50px;
+    height: 50px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.history-weather .temperature {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.95);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.history-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1.25rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 1rem;
+}
+
+.history-details .detail {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: rgba(255, 255, 255, 0.8);
+    padding: 0.5rem;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.history-details .detail:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.history-details .detail i {
+    width: 20px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.view-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.view-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.view-btn i {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+    .history-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .history-card {
+        padding: 1rem;
+    }
+
+    .history-section .section-title {
+        font-size: 1.5rem;
+    }
+
+    .history-weather .temperature {
+        font-size: 1.3rem;
+    }
+
+    .history-details {
+        padding: 1rem 0;
+    }
+}
+
+/* Card Styles */
+.card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.15) 0%,
+        rgba(255, 255, 255, 0.05) 100%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.card:hover::before {
+    opacity: 1;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.95);
+    margin-bottom: 0.5rem;
+}
+
+.card-subtitle {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.card-body {
+    position: relative;
+    z-index: 1;
+}
+
+.card-footer {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Card Grid */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+/* Card Variations */
+.card-compact {
+    padding: 1rem;
+}
+
+.card-highlight {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.card-action {
+    cursor: pointer;
+}
+
+.card-action:active {
+    transform: translateY(-2px);
+}
+
+/* Card Content Elements */
+.card-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    margin-bottom: 1rem;
+}
+
+.card-icon i {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.card-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.stat-value {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.95);
+    margin-bottom: 0.25rem;
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .card-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .card {
+        padding: 1rem;
+    }
+
+    .card-header {
+        margin-bottom: 1rem;
+        padding-bottom: 0.75rem;
+    }
+
+    .card-title {
+        font-size: 1.1rem;
+    }
+
+    .card-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* History Section Styles */
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-header .section-title {
+    font-size: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.section-header .section-subtitle {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.1rem;
+}
+
+.temperature-display {
+    text-align: center;
+    margin: 1.5rem 0;
+}
+
+.current-temp {
+    font-size: 3rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.95);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.weather-desc {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.1rem;
+    text-transform: capitalize;
+}
+
+.empty-state {
+    max-width: 500px;
+    margin: 3rem auto;
+    text-align: center;
+    padding: 3rem 2rem;
+}
+
+.empty-state i {
+    font-size: 4rem;
+    color: rgba(255, 255, 255, 0.3);
+    margin-bottom: 1.5rem;
+}
+
+.empty-state p {
+    color: rgba(255, 255, 255, 0.7);
+    margin: 1rem 0 2rem;
+}
+
+@media (max-width: 768px) {
+    .section-header .section-title {
+        font-size: 2rem;
+    }
+
+    .section-header .section-subtitle {
+        font-size: 1rem;
+    }
+
+    .current-temp {
+        font-size: 2.5rem;
+    }
+
+    .empty-state {
+        padding: 2rem 1rem;
+    }
+}
+
+/* Auth Pages Styles */
+.auth-page {
+    min-height: calc(100vh - 70px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+}
+
+.auth-container {
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+}
+
+.auth-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.auth-title {
+    font-size: 2rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.auth-subtitle {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1rem;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    position: relative;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.input-wrapper input {
+    width: 100%;
+    padding: 1rem;
+    padding-left: 3rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    color: #fff;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.input-wrapper input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.input-wrapper input:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.input-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1.1rem;
+}
+
+.toggle-password {
+    left: auto;
+    right: 1rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.toggle-password:hover {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.options-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem 0;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    padding: 0.25rem 0;
+}
+
+.checkbox-wrapper input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin: 0;
+    cursor: pointer;
+    accent-color: #4a90e2;
+}
+
+.checkbox-label {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.95rem;
+    user-select: none;
+}
+
+.forgot-link {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    padding: 0.25rem 0;
+}
+
+.forgot-link:hover {
+    color: #4a90e2;
+    transform: translateX(3px);
+}
+
+.auth-button {
+    width: 100%;
+    padding: 1rem;
+    background: #4a90e2;
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.auth-button:hover {
+    background: #357abd;
+    transform: translateY(-2px);
+}
+
+.auth-button i {
+    font-size: 1.1rem;
+}
+
+.auth-footer {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.auth-link {
+    color: #4a90e2;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.auth-link:hover {
+    color: #357abd;
+}
+
+.password-strength {
+    margin-top: 0.5rem;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.strength-meter {
+    height: 100%;
+    width: 0;
+    transition: all 0.3s ease;
+}
+
+.strength-text {
+    display: block;
+    margin-top: 0.25rem;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.terms-group {
+    margin-top: 0.5rem;
+}
+
+.alert {
+    padding: 1rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.alert-error {
+    background: rgba(255, 59, 48, 0.1);
+    border: 1px solid rgba(255, 59, 48, 0.2);
+    color: #ff3b30;
+}
+
+@media (max-width: 480px) {
+    .auth-card {
+        padding: 1.5rem;
+    }
+
+    .auth-title {
+        font-size: 1.75rem;
+    }
+
+    .options-group {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+        margin: 0.75rem 0;
+    }
+
+    .forgot-link {
+        align-self: flex-end;
+    }
+} 
